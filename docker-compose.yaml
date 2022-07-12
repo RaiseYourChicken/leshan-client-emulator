@@ -1,0 +1,31 @@
+version: "3.1"
+
+services:
+  leshan-server:
+    build:
+      context: server/
+      dockerfile: Dockerfile
+    network_mode: "host"
+    container_name: lwm2m-server
+  
+  leshan-bootstrap:
+    build:
+      context: bs-server/
+      dockerfile: Dockerfile
+    network_mode: "host"
+    container_name: lwm2m-bsserver
+    volumes:
+      - type: bind
+        source: ./bs-server/bootstrapStore.json
+        target: /app/config.json
+
+  leshan-client:
+    build:
+      context: client/
+      dockerfile: Dockerfile
+    hostname: leshan-client
+    network_mode: "host"
+    container_name: kallisto-lwm2m-client-emulator
+    depends_on:
+        - leshan-server
+        - leshan-bootstrap
