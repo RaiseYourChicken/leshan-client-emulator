@@ -25,11 +25,6 @@
             <version>${leshan.core.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.leshan</groupId>
-            <artifactId>leshan-core-demo</artifactId>
-            <version>${leshan.core.demo.version}</version>
-        </dependency>
-        <dependency>
             <groupId>info.picocli</groupId>
             <artifactId>picocli</artifactId>
             <version>4.2.0</version>

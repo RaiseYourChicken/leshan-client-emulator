@@ -1,23 +1,19 @@
 version: "3.1"
 
 services:
-  leshan-server:
-    build:
-      context: server/
-      dockerfile: Dockerfile
-    network_mode: "host"
-    container_name: lwm2m-server
-  
   leshan-bootstrap:
     build:
       context: bs-server/
       dockerfile: Dockerfile
     network_mode: "host"
-    container_name: lwm2m-bsserver
+    container_name: emulator-lwm2m-bsserver
     volumes:
       - type: bind
         source: ./bs-server/bootstrapStore.json
         target: /app/config.json
+    depends_on:
+      - iot-agent
+      - orion
 
   leshan-client:
     build:
@@ -25,7 +21,59 @@ services:
       dockerfile: Dockerfile
     hostname: leshan-client
     network_mode: "host"
-    container_name: kallisto-lwm2m-client-emulator
+    container_name: emulator-lwm2m-client
     depends_on:
-        - leshan-server
-        - leshan-bootstrap
+      - leshan-bootstrap
+      - iot-agent
+      - orion
+
+  iot-agent:
+    image: fiware/lightweightm2m-iotagent
+    hostname: iot-agent
+    network_mode: "host"
+    container_name: emulator-fiware-iot-agent
+    volumes:
+      - type: bind
+        source: ./AgentConfig.js
+        target: /opt/iota-lwm2m/config.js
+    depends_on:
+      - mongodb
+    expose:
+      - "4041"
+      - "5683"
+    # ports:
+    #     - "4041:4041"
+    #     - "5683:5683"
+    environment:
+      - "IOTA_CB_HOST=localhost"
+      - "IOTA_CB_PORT=1026"
+      - "IOTA_NORTH_PORT=4041"
+      - "IOTA_REGISTRY_TYPE=mongodb"
+      - "IOTA_MONGO_HOST=localhost"
+      - "IOTA_MONGO_PORT=27017"
+      - "IOTA_MONGO_DB=iotagent-lwm2m"
+      - "LWM2M_PORT=5683"
+
+  mongodb:
+    image: mongo:4.4
+    hostname: mongodb
+    #network_mode: "host"
+    container_name: emulator-db-mongo
+    ports:
+        - "27017:27017"
+    command: --bind_ip_all
+    # volumes:
+    #     - mongodb:/data
+
+  orion:
+    image: fiware/orion
+    #network_mode: "host"
+    hostname: orion
+    container_name: emulator-fiware-orion
+    depends_on:
+        - mongodb
+    expose:
+        - "1026"
+    ports:
+        - "1026:1026"
+    command: -dbhost mongodb

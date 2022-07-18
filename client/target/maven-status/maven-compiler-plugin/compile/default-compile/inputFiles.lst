@@ -1,4 +1,9 @@
+/home/joao.gomes/Desktop/leshan/leshan-kallisto-emulator/client/src/main/java/kallisto/sensors/RandomParticulatesSensor.java
+/home/joao.gomes/Desktop/leshan/leshan-kallisto-emulator/client/src/main/java/kallisto/sensors/RandomHumiditySensor.java
+/home/joao.gomes/Desktop/leshan/leshan-kallisto-emulator/client/src/main/java/kallisto/sensors/RandomTemperatureSensor.java
+/home/joao.gomes/Desktop/leshan/leshan-kallisto-emulator/client/src/main/java/kallisto/sensors/RandomBarometerSensor.java
 /home/joao.gomes/Desktop/leshan/leshan-kallisto-emulator/client/src/main/java/kallisto/EmulatorClient.java
+/home/joao.gomes/Desktop/leshan/leshan-kallisto-emulator/client/src/main/java/kallisto/sensors/RandomLoudnessGenerator.java
 /home/joao.gomes/Desktop/leshan/leshan-kallisto-emulator/client/src/main/java/kallisto/MyLocation.java
 /home/joao.gomes/Desktop/leshan/leshan-kallisto-emulator/client/src/main/java/kallisto/MyDevice.java
-/home/joao.gomes/Desktop/leshan/leshan-kallisto-emulator/client/src/main/java/kallisto/RandomTemperatureSensor.java
+/home/joao.gomes/Desktop/leshan/leshan-kallisto-emulator/client/src/main/java/kallisto/sensors/RandomGPSGenerator.java

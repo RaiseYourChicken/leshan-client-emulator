@@ -10,5 +10,4 @@ RUN mvn verify clean --fail-never
 COPY . /app
 RUN mvn -v
 RUN mvn clean install -DskipTests
-ADD ./target/client-emulator-1.0.0-jar-with-dependencies.jar /developments/
-ENTRYPOINT ["java","-jar","/developments/client-emulator-1.0.0-jar-with-dependencies.jar"]
+ENTRYPOINT ["java","-jar","/app/target/client-emulator-1.0.0-jar-with-dependencies.jar"]

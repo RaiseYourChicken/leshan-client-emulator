@@ -1,39 +1,4 @@
 {
-    "kallisto_sy020": {
-        "autoIdForSecurityObject": false,
-        "toDelete": [
-            "/0",
-            "/1"
-        ],
-        "servers": {
-            "0": {
-                "shortId": 123,
-                "lifetime": 300,
-                "defaultMinPeriod": 1,
-                "notifIfDisabled": true,
-                "binding": "U"
-            }
-        },
-        "security": {
-            "1": {
-                "uri": "coap://192.0.2.2:5683/kallisto",
-                "bootstrapServer": false,
-                "securityMode": "NO_SEC",
-                "publicKeyOrId": [],
-                "serverPublicKey": [],
-                "secretKey": [],
-                "smsSecurityMode": "NO_SEC",
-                "smsBindingKeyParam": [],
-                "smsBindingKeySecret": [],
-                "serverSmsNumber": "",
-                "serverId": 123,
-                "clientOldOffTime": 1,
-                "bootstrapServerAccountTimeout": 0
-            }
-        },
-        "acls": {},
-        "oscore": {}
-    },
     "test": {
         "autoIdForSecurityObject": false,
         "toDelete": [
@@ -43,7 +8,7 @@
         "servers": {
             "0": {
                 "shortId": 123,
-                "lifetime": 300,
+                "lifetime": 3600,
                 "defaultMinPeriod": 1,
                 "notifIfDisabled": true,
                 "binding": "U"
@@ -51,7 +16,7 @@
         },
         "security": {
             "1": {
-                "uri": "coap://localhost:5683",
+                "uri": "coap://localhost:5683/kallisto",
                 "bootstrapServer": false,
                 "securityMode": "NO_SEC",
                 "publicKeyOrId": [],
